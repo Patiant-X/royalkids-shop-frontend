@@ -1,74 +1,153 @@
-# Checkout the deployed version
+# 🍽️ Food Ordering App — Frontend (React + Redux)
 
-https://royalkids-shop.vercel.app/
+This is the **frontend** of a full-stack food ordering application, developed using **React**, **Redux Toolkit**, and **Axios**. It connects to a standalone backend via a proxy and enables users to:
 
-# Getting Started with Create React App
+- Browse a food menu
+- Add items to their cart
+- Enter delivery addresses via Google Maps Autocomplete
+- Checkout with **PayPal**
+- Receive email order confirmations
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hosted backend: `https://royalkids-shop.onrender.com`
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🔍 Key Features
 
-### `npm start`
+- ✅ React 18 with functional components and hooks
+- 🛒 Redux Toolkit for global state management
+- 📦 Axios for API requests
+- 🎨 Responsive UI with React-Bootstrap
+- 📍 Google Maps address autocomplete (via backend)
+- 💳 PayPal payment gateway integration
+- 🔔 Toast notifications (React Toastify)
+- 🔐 Helmet for SEO and metadata
+- 📦 Production-ready build via React Scripts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧰 Technologies & Libraries
 
-### `npm test`
+| Library / Tool             | Purpose                                  |
+|----------------------------|-------------------------------------------|
+| React                     | Core UI framework                         |
+| Redux Toolkit             | Cart and order state management           |
+| Axios                     | HTTP client for API requests              |
+| React Router DOM          | Navigation and routing                    |
+| React Bootstrap / Bootstrap| UI layout and components                 |
+| React PayPal JS           | PayPal SDK wrapper                        |
+| React Toastify            | Toast message notifications               |
+| React Helmet Async        | Metadata management for SEO              |
+| Render.com                | Backend hosting platform                  |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🏗️ Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+src/
+├── components/          # Reusable UI components
+├── pages/               # Page views like Home, Cart, Checkout
+├── redux/               # Redux slices and store setup
+├── services/            # API functions using Axios
+├── utils/               # Utility functions
+├── App.js               # Main application with routes
+└── index.js             # App entry point
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+````
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. Clone the Repository
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/yourusername/food-frontend.git
+cd food-frontend
+````
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. Install Dependencies
 
-## Learn More
+```bash
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 3. Configure Environment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+No `.env` is required for the frontend if using the default proxy in `package.json`:
 
-### Code Splitting
+```json
+"proxy": "https://royalkids-shop.onrender.com"
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If using Google Maps or other integrations, you may add:
 
-### Analyzing the Bundle Size
+```env
+REACT_APP_GOOGLE_MAPS_API_KEY=your_key_here
+REACT_APP_PAYPAL_CLIENT_ID=your_paypal_client_id
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 4. Run the App
 
-### Making a Progressive Web App
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+App runs on: `http://localhost:3000`
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🛒 Key Pages
 
-### Deployment
+| Route            | Description                     |
+| ---------------- | ------------------------------- |
+| `/`              | Home page                       |
+| `/menu`          | Food items and categories       |
+| `/cart`          | Cart with added items           |
+| `/checkout`      | Enter address + pay with PayPal |
+| `/order-success` | Order confirmation & email sent |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 💡 Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Email notifications are handled on the backend using **Nodemailer**
+* Google Maps API is invoked via backend for address input
+* Redux store tracks food items, cart, and order status
+* PayPal client ID is loaded dynamically for security
+* Toast messages provide feedback on key actions (add to cart, payment success, etc.)
+
+---
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+This will generate a minified and optimized build in the `build/` folder.
+
+---
+
+## 📜 License
+
+MIT License — free for personal and commercial use.
+
+---
+
+## 👤 Author
+
+Developed by Thabani Ngwenya
+📧 Email: [ngwenyathabani080@gmail.com](mailto:ngwenyathabani080@gmail.com)
+
+
+---
+
+## 🔗 Related Repositories
+
+* 📦 [Backend API](https://github.com/yourusername/food-backend)
+
+```
+
